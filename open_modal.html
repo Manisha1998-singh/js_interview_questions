@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open modal on button click</title>
+  </head>
+  <body>
+    <style>
+      .hidden {
+        display: none;
+      }
+
+      #overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      .box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        background: antiquewhite;
+        border-radius: 5px;
+        z-index: 2;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+    <button id="clickbtn">Open Modal</button>
+
+    <div id="overlay" class="hidden"></div>
+
+    <div id="one" class="box hidden">
+      DIV ONE CONTENT
+      <button id="closebtn">Close</button>
+    </div>
+
+    <script>
+      const openBtn = document.getElementById("clickbtn");
+      const closeBtn = document.getElementById("closebtn");
+      const modal = document.getElementById("one");
+      const overlay = document.getElementById("overlay");
+
+      openBtn.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+        overlay.classList.remove("hidden");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>
