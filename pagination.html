@@ -1,0 +1,97 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagination for fixed data</title>
+    <link rel="stylesheet" href="/real-time-character-counter/style.css" />
+  </head>
+  <body>
+    <style>
+      .hidden {
+        display: none;
+      }
+
+      #overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      .box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        background: antiquewhite;
+        border-radius: 5px;
+        z-index: 2;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+
+    <div class="box">
+      <h2>Pagination</h2>
+      <ul id="list"></ul>
+      <button id="prev">prev</button>
+      <button id="next">next</button>
+      <p id="info"></p>
+    </div>
+
+    <script>
+      const data = [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "Item 6",
+        "Item 7",
+        "Item 8",
+        "Item 9",
+        "Item 10",
+        "Item 11",
+        "Item 12",
+        "Item 13",
+        "Item 14",
+        "Item 15",
+      ];
+      const list = document.getElementById("list");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const pageText = document.getElementById("info");
+
+      let currentpage = 1;
+      const itemperpage = 5;
+
+      function pageRender() {
+        list.innerHTML = "";
+        const start = (currentpage - 1) * itemperpage;
+        const end = start + itemperpage;
+
+        const pageitem = data.slice(start, end);
+        pageitem.forEach((element) => {
+          const li = document.createElement("li");
+          li.textContent = element;
+          list.appendChild(li);
+        });
+        pageText.textContent = `Page ${currentpage}`;
+      }
+      nextBtn.addEventListener("click", function () {
+        if (currentpage * itemperpage < data.length) {
+          currentpage++;
+          pageRender();
+        }
+      });
+      prevBtn.addEventListener("click", function () {
+        if (currentpage > 1) {
+          currentpage--;
+          pageRender();
+        }
+      });
+      pageRender();
+    </script>
+  </body>
+</html>
