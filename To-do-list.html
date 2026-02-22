@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-time Charater Counter</title>
+    <link rel="stylesheet" href="/real-time-character-counter/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>To-do List add and remove task.</h2>
+      <textarea
+        id="textarea"
+        class="textarea"
+        placeholder="Please write your text here..."
+        maxlength="50"></textarea>
+
+      <button type="submit" id="AddTask">Add Task</button>
+      <button type="submit" id="DeleteTask">Delete Task</button>
+      <div class="counter-container">
+        <p>
+          Task Added list:
+          <span class="total-counter" id="total-counter"></span>
+        </p>
+        <div>
+          <ol class="list"></ol>
+          Remaining:
+          <span class="remaining-counter" id="remaining-counter"></span>
+        </div>
+      </div>
+    </div>
+    <script>
+      let textarea = document.getElementById("textarea");
+      let DeleteTask = document.getElementById("DeleteTask");
+      let AddTask = document.getElementById("AddTask");
+      let totalCounter = document.getElementById("total-counter");
+      let remainingCounter = document.getElementById("remaining-counter");
+      //let list = document.getElementsByClassName("list");
+      let list = document.querySelector(".list");
+
+      //const maxLength = textarea.getAttribute("maxlength");
+      let maxCounter = textarea.maxLength;
+      AddTask.addEventListener("click", function (e) {
+        if (textarea.value.trim() === "") {
+          textarea.focus();
+          textarea.style.borderColor = "red";
+          AddTask.style.opacity = 0.7;
+        } else {
+          let li = document.createElement("li");
+
+          // note: when you create li outside the event it only create once that why i created inside the event because before it  create one li and update in same place but i want whole list so i created  inside the event now it add multiple li.
+          li.textContent = textarea.value;
+          //li.textContent = textarea.value;
+
+          list.append(li);
+
+          AddTask.style.opacity = 1;
+
+          totalCounter.textContent = textarea.value;
+          textarea.value = "";
+
+          //remainingCounter.textContent = maxCounter - length;
+        }
+      });
+      //   DeleteTask.addEventListener("click", function () {
+      //     let li = document.createElement("li");
+      //     list.remove(li);
+      //   });
+
+      list.addEventListener("click", function (e) {
+        if (e.target.tagName === "LI") {
+          e.target.remove();
+        }
+      });
+    </script>
+  </body>
+</html>
