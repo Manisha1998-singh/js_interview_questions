@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme Toggle</title>
+  </head>
+  <body>
+    <div class="box">
+      <h2>Theme Toggle</h2>
+      <button id="toggle">Theme Toggle</button>
+      <p>Click the button to switch styles.</p>
+    </div>
+  </body>
+  <script>
+    let dark = false;
+    document.getElementById("toggle").addEventListener("click", function () {
+      dark = !dark;
+      document.body.style.backgroundColor = dark ? "#111" : "#fff";
+      document.body.style.color = dark ? "#fff" : "#111";
+    });
+  </script>
+</html>
