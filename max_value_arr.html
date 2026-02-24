@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find max number in given array</title>
+  </head>
+  <body>
+    <h1>Find max number in given array</h1>
+    <script>
+      function Arr(a) {
+        let max = a[0];
+        for (let i = 0; i < a.length; i++) {
+          if (a[i] > max) {
+            max = a[i];
+          }
+        }
+        console.log(max);
+      }
+
+      Arr([10, 40, 50, 50, 60]);
+    </script>
+  </body>
+</html>

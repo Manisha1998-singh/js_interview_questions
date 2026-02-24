@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function debounce(fn, delays) {
+        let timer;
+        return function (...args) {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn(...args);
+          }, delays);
+        };
+      }
+
+      let resdebounce = debounce(validateEmail, 5000);
+
+      mail.addEventListener("input", (e) => {
+        resdebounce(); // ✅ debounce used correctly
+        console.log(e.target.value);
+      });
+    </script>
+  </body>
+</html>
