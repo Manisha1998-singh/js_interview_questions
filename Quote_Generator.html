@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generator</title>
+  </head>
+  <body>
+    <div class="box">
+      <h2>Random Quote</h2>
+      <p id="quote" style="margin-top: 10px"></p>
+      <button id="new">New Quote</button>
+    </div>
+  </body>
+  <script>
+    const quotes = [
+      "small steps, daily.",
+      "Make it work, then make it better.",
+      "Practice beats theory.",
+      "Debugging is learning in disguise.",
+    ];
+    const quote = document.getElementById("quote");
+    function showRandomQuote() {
+      let quoterandom = Math.floor(Math.random() * quotes.length);
+      quote.textContent = quotes[quoterandom];
+    }
+    document.getElementById("new").addEventListener("click", showRandomQuote);
+    showRandomQuote();
+  </script>
+</html>
