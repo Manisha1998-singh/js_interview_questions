@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <input id="secs" type="number" min="1" placeholder="Seconds" />
+      <p id="timer"></p>
+      <button id="start">start</button>
+      <button id="stop">Stop</button>
+    </div>
+  </body>
+  <script>
+    let secsInput = document.getElementById("secs");
+    let timer = document.getElementById("timer");
+    let start = document.getElementById("start");
+    let end = document.getElementById("stop");
+    let id = null;
+    let remaining = 0;
+    start.addEventListener("click", function () {
+      remaining = Number(secsInput.value);
+      if (!Number.isFinite(remaining) || remaining <= 0) {
+        timer.textContent = "Enter a positive number.";
+        return;
+      }
+
+      clearInterval(id);
+      timer.textContent = `Remaining: ${remaining}s`;
+      id = setInterval(() => {
+        remaining--;
+        timer.textContent = `Remaining: ${remaining}s`;
+        if (remaining <= 0) {
+          clearInterval(id);
+          timer.textContent = "Done!";
+        }
+      }, 1000);
+    });
+    end.addEventListener("click", function () {
+      clearInterval(id);
+      secsInput.value = "";
+      timer.textContent = "";
+    });
+  </script>
+</html>
