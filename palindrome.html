@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function abc(n) {
+      let newname = n.split("").reverse().join("");
+      if (n === newname) {
+        console.log("this number is palindrome");
+      } else {
+        console.log("this number is not palindrome");
+      }
+    }
+    abc("name");
+    abc("level");
+    abc("Manisha");
+  </script>
+</html>

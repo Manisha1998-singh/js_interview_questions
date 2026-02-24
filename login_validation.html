@@ -1,0 +1,109 @@
+html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Browser</title>
+  </head>
+  <style>
+    .hidden {
+      display: block !important;
+      color: red;
+    }
+    .red{
+        
+        border: 1px solid red;
+    }
+  </style>
+  <body>
+
+
+    <form  id="form">
+         <h1 id="head" style="display: none;" >Write, edit and run HTML, CSS and JavaScript code online.</h1>
+<label>login form</label>
+<br/>
+<label>Email</label> <br/>
+<input class="texbox" type="text" id="mail"  placeholder="Email"/>
+<br/>
+<label class="texbox" >Password</label> <br/>
+<input type="password"  id="pass" placeholder="password"/>
+<br/>
+ <br/>
+    <button  type="submit" >Click me</button>
+   
+    <p>
+      Our HTML editor updates the webview automatically in real-time as you
+      write code.
+    </p>
+    </form>
+    </body>
+    <script src="script.js"></script>
+  </body>
+  <script>
+    let form = document.getElementById("form");
+    let submit = document.getElementById("submit");
+    let mail = document.getElementById("mail");
+    let pass = document.getElementById("pass");
+     let head = document.getElementById("head");
+     let emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+     // EMAIL VALIDATION FUNCTION (REUSABLE)
+function validateEmail() {
+    console.log("VALIDATION RAN");
+  if (emailpattern.test(mail.value.trim()) && mail.value.trim() !== "") {
+    sessionStorage.setItem("email", mail.value.trim());
+    console.log("correct mail");
+    mail.classList.remove("red");
+    head.classList.remove("hidden");
+    let mailid = mail.value;
+    console.log(mailid);
+    return true;
+  
+
+  } else {
+    console.log("mail is not correct");
+    mail.classList.add("red");
+    head.classList.add("hidden");
+    return false;
+  }
+    
+}
+    form.addEventListener("submit", function (e) {
+     let isValid = true;
+
+
+         e.preventDefault();
+        if(pass.value.trim() === ""){
+             head.classList.add("hidden");
+             pass.classList.add("red");
+             isValid = false;
+
+
+        } 
+        else{
+            head.classList.remove("hidden");
+             pass.classList.remove("red");
+             localStorage.setItem("password", pass.value);
+
+        }
+
+         if (!validateEmail()) {
+    isValid = false;
+  }
+
+    if (isValid) {
+    console.log("Form is valid ✅");
+    
+  }
+
+      
+    });
+ 
+  </script>
+</html>
+
+
+
+
+

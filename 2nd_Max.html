@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function abc(n) {
+      let max = n[0];
+      let secondtmax = -Infinity;
+
+      for (let i = 1; i < n.length; i++) {
+        if (n[i] > max) {
+          secondtmax = max;
+          max = n[i];
+          //console.log(max);
+        } else n[i] > secondtmax && n[i] !== max;
+        n[i] = secondtmax;
+      }
+
+      return secondtmax;
+    }
+    let res = abc([2, 5, 7, 4, 3, 7]);
+    console.log(res);
+  </script>
+</html>

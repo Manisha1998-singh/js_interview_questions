@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const product = [
+      { name: "Apple", category: "Fruit" },
+      { name: "Carrot", category: "Veg" },
+      { name: "Apttttple", category: "Fruit" },
+    ];
+
+    let group = {};
+    for (const index in product) {
+      let keys = product[index].category;
+      group[keys] = group[keys] || [];
+      group[keys].push(product[index]);
+    }
+    console.log(group);
+  </script>
+</html>

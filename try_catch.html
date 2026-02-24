@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function safeJson(n) {
+      try {
+        return { name: true, value: parse(n) };
+      } catch (err) {
+        return { name: false, error: err.message };
+      }
+    }
+    //use
+
+    const result = safeJson("manisha");
+    if (!result.name) {
+      console.log("invalid json", result.error);
+    } else {
+      console.log(result.value);
+    }
+  </script>
+</html>

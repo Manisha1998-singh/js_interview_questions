@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Browser</title>
+  </head>
+  <style>
+    .hidden {
+      display: block !important;
+      color: red;
+    }
+    .red{
+        
+        border: 1px solid red;
+    }
+  </style>
+  <body>
+
+
+    <form  id="form">
+         <h1 id="head" style="display: none;" >Write, edit and run HTML, CSS and JavaScript code online.</h1>
+<label>login form</label>
+<br/>
+<label>Email</label> <br/>
+<input class="texbox" type="text" id="mail"  placeholder="Email"/>
+<br/>
+<label class="texbox" >Password</label> <br/>
+<input type="password"  id="pass" placeholder="password"/>
+<br/>
+ <br/>
+    <button  type="submit" >Click me</button>
+   
+    <p>
+      Our HTML editor updates the webview automatically in real-time as you
+      write code.
+    </p>
+    </form>
+    </body>
+    <script src="script.js"></script>
+  </body>
+  <script>
+    let form = document.getElementById("form");
+    let submit = document.getElementById("submit");
+    let mail = document.getElementById("mail");
+    let pass = document.getElementById("pass");
+     let head = document.getElementById("head");
+    form.addEventListener("submit", function (e) {
+         e.preventDefault();
+        if(mail.value.trim() === "" || pass.value.trim() === ""){
+             //head.classList.remove("hidden");
+             head.classList.add("hidden");
+            
+             mail.classList.add("red");
+             pass.classList.add("red");
+             //mail.classList.add("red");
+
+        }
+        else{
+            head.classList.remove("hidden");
+             //head.classList.add("hidden");
+             mail.classList.remove("red");
+             pass.classList.remove("red");
+
+        }
+     
+    });
+  </script>
+</html>

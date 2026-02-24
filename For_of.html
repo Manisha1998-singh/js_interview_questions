@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function fil(n) {
+      let i = 0;
+      for (i of n) {
+        if (i % 2 === 0) {
+          console.log("number is even");
+        } else {
+          console.log("number is odd");
+        }
+      }
+      return n[i];
+    }
+    fil([9, 5, 6, 8, 4]);
+  </script>
+</html>

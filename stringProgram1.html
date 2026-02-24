@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let text = "india is love";
+    let stor = text.split("");
+    let re = "";
+    for (let j = stor.length - 1; j >= 0; j--) {
+      re = re + stor[j] + "";
+    }
+    re = re.trim();
+    re = re[0].toUpperCase() + re.slice(1);
+    console.log(re);
+  </script>
+</html>

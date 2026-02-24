@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Browser</title>
+  </head>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+  <body>
+    <button id="button">Click me</button>
+    <h1 id="head">Write, edit and run HTML, CSS and JavaScript code online.</h1>
+    <p>
+      Our HTML editor updates the webview automatically in real-time as you
+      write code.
+    </p>
+    <script src="script.js"></script>
+  </body>
+  <script>
+    let button = document.getElementById("button");
+    let head = document.getElementById("head");
+    button.addEventListener("click", function () {
+      head.classList.toggle("hidden");
+    });
+  </script>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Browser</title>
+  </head>
+  <style>
+    .hidden {
+      display: block !important;
+      color: red;
+    }
+    .red{
+        
+        border: 1px solid red;
+    }
+  </style>
+  <body>
+
+
+    <form  id="form">
+         <h1 id="head" style="display: none;" ></h1>
+<label>login form</label>
+<br/>
+
+<br/>
+ <br/>
+    <button  type="submit" >Click me</button>
+   
+    <p>
+      Our HTML editor updates the webview automatically in real-time as you
+      write code.
+    </p>
+    </form>
+    </body>
+   
+  </body>
+  <script>
+    let form = document.getElementById("form");
+    
+   
+     let head = document.getElementById("head");
+    let count =  localStorage.getItem("count");
+    if(count === null){
+        count = 0;
+    }else{
+        count = Number(count);
+    }
+    form.addEventListener("submit", function (e) {
+         e.preventDefault();
+      
+              count++;
+            
+             localStorage.setItem("count", count);
+             head.style.display = "block";
+             head.textContent = "Clicked by button" + " " + count;
+
+       
+     
+    });
+    window.onload = function () {
+  count = 0;
+};
+
+  </script>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Browser</title>
+  </head>
+
+  <body>
+    <ul id="title"></ul>
+
+    <p>
+      Our HTML editor updates the webview automatically in real-time as you
+      write code.
+    </p>
+
+    <script>
+      let arr = ["manisha", "shilpa", "anju", "nidhi"];
+      let ul = document.getElementById("title");
+      arr.forEach((t) => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        ul.appendChild(li);
+      });
+    </script>
+  </body>
+</html>

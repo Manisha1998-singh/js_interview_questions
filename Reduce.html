@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fil2(a) {
+        let j;
+        let res2 = a.reduce((total, i) => total + i, 0);
+        return console.log(res2);
+      }
+      fil2([2, 5, 6]);
+
+      ////////////////
+
+      function fil3(n) {
+        let i;
+        let res3 = n.reduce((multiply, i) => multiply * i, 1);
+        return console.log(res3);
+      }
+      fil3([2, 1, 2, 4]);
+      ////////////////
+
+      function fil4(n) {
+        let i;
+        let res4 = n.reduce((max, i) => {
+          return i > max ? i : max;
+        }, n[0]);
+        console.log(res4);
+      }
+
+      fil4([2, 1, 2, 4]);
+      ////////////////
+      function Ac(n) {
+        let i;
+        let res = n.reduce((acc, i) => {
+          if (!acc.includes(i)) {
+            acc.push(i);
+          }
+          return acc;
+        }, []);
+        console.log(res);
+      }
+      Ac([2, 5, 7, 8, 3, 2, 2]);
+    </script>
+  </body>
+</html>

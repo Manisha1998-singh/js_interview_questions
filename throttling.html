@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label>Search here</label>
+
+    <input type="text" placeholder="Search here" />
+
+    <label id="textinput"></label>
+    <script>
+      const textinput = document.getElementById("textinput");
+      function throtl(fn, delays) {
+        let timer = 0;
+        return function (...args) {
+          const now = Date.now();
+          //clearTimeout(timer);
+          if (now - timer >= delays) timer = now;
+          fn(...args);
+        };
+      }
+
+      function search(query) {
+        textinput.textContent = query;
+        console.log("searching ", query);
+      }
+
+      const throtlsearc = throtl(search, 5000);
+
+      document.querySelector("input").addEventListener("input", (e) => {
+        throtlsearc(e.target.value);
+      });
+    </script>
+  </body>
+</html>
