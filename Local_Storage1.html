@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="textBox"></textarea>
+    <h1 id="textlbl"></h1>
+    <button id="save">Save</button>
+    <button id="clear">Clear</button>
+  </body>
+  <script>
+    let textBox = document.getElementById("textBox");
+    let textlbl = document.getElementById("textlbl");
+    let save = document.getElementById("save");
+    let clear = document.getElementById("clear");
+
+    textBox.value = localStorage.getItem("notes");
+    save.addEventListener("click", function () {
+      if (textBox.value.trim() === "") {
+        textlbl.textContent = "textbox is blank Please enter somthing to save.";
+        textBox.focus();
+        textBox.style.borderColor = "red";
+      } else {
+        localStorage.setItem("notes", textBox.value);
+        textlbl.textContent = "data Saved.";
+        textBox.value = "";
+      }
+    });
+    clear.addEventListener("click", function () {
+      localStorage.removeItem("notes");
+      textBox.value = "";
+      textlbl.textContent = "Data cleared.";
+    });
+    window.onload = function () {
+      textBox.value = "";
+    };
+  </script>
+</html>
