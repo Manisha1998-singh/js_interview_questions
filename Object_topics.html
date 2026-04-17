@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Object Important Notes</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+        background: #f4f6f8;
+      }
+      h1,
+      h2 {
+        color: #2c3e50;
+      }
+      pre {
+        background: #1e1e1e;
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .box {
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .highlight {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Object Important Notes</h1>
+
+    <div class="box">
+      <h2>1. Object Basics</h2>
+      <pre>
+const user = {
+  name: "Manisha",
+  age: 25,
+};
+
+console.log(user["name"]); // Manisha
+console.log(user.name);    // Manisha
+
+let key = "name";
+console.log(user[key]);    // Manisha
+
+user.name = "Shilpa";
+console.log(user.name);    // Shilpa
+
+user.gender = "female";
+console.log(user.gender);  // female
+
+delete user.gender;
+console.log(user.gender);  // undefined
+      </pre>
+    </div>
+
+    <div class="box">
+      <h2>2. Dynamic Keys (Important)</h2>
+      <pre>
+user[key] = "Ankita";
+console.log(user[key]); // Ankita
+
+delete user[key];
+console.log(user[key]); // undefined
+      </pre>
+    </div>
+
+    <div class="box">
+      <h2>3. Object Methods</h2>
+      <pre>
+const obj1 = { a: 3, b: 5, c: 9 };
+
+Object.keys(obj1);    // ['a','b','c']
+Object.values(obj1);  // [3,5,9]
+Object.entries(obj1); // [['a',3], ['b',5], ['c',9]]
+
+typeof obj1;                  // object
+typeof Object.keys(obj1);     // object (array)
+      </pre>
+    </div>
+
+    <div class="box">
+      <h2>4. Shallow Copy</h2>
+      <pre>
+const obj2 = {
+  name: "Manisha",
+  address: { city: "Delhi" }
+};
+
+const shallowCopy = { ...obj2 };
+
+shallowCopy.name = "Shilpa";                 // separate
+shallowCopy.address.city = "Uttarakhand";    // SAME reference
+
+console.log(obj2.address.city); // Uttarakhand
+      </pre>
+      <p class="highlight">👉 Nested objects share reference</p>
+    </div>
+
+    <div class="box">
+      <h2>5. Deep Copy</h2>
+      <pre>
+const deepCopy = JSON.parse(JSON.stringify(obj2));
+
+deepCopy.address.city = "Haldwani";
+
+console.log(obj2.address.city); // NOT changed
+      </pre>
+      <p class="highlight">👉 Completely independent copy</p>
+    </div>
+
+    <div class="box">
+      <h2>6. Object.assign()</h2>
+      <pre>
+const obj3 = { name: "Manisha" };
+const obj4 = { gender: "Female" };
+
+const merged = Object.assign(obj3, obj4);
+
+console.log(merged); // { name: "Manisha", gender: "Female" }
+      </pre>
+    </div>
+
+    <div class="box">
+      <h2>7. this Keyword</h2>
+      <pre>
+const obj = {
+  name: "Manisha",
+  getName: function() {
+    console.log(this.name);
+  }
+};
+
+obj.getName(); // Manisha
+
+let fn = obj.getName;
+fn(); // undefined (lost context)
+      </pre>
+    </div>
+
+    <div class="box">
+      <h2>8. Object.freeze()</h2>
+      <pre>
+const frozenUser = { name: "Manisha" };
+
+Object.freeze(frozenUser);
+
+frozenUser.name = "Kanika"; // Not allowed
+frozenUser.age = 25;        // Not allowed
+
+console.log(frozenUser); // unchanged
+      </pre>
+      <p class="highlight">👉 Cannot add, update, or delete</p>
+    </div>
+
+    <div class="box">
+      <h2>9. Object.seal()</h2>
+      <pre>
+const sealedUser = { name: "Chita" };
+
+Object.seal(sealedUser);
+
+sealedUser.name = "Kanika"; // allowed
+sealedUser.age = 25;        // NOT allowed
+delete sealedUser.name;     // NOT allowed
+      </pre>
+      <p class="highlight">👉 Can update, but cannot add or delete</p>
+    </div>
+
+    <div class="box">
+      <h2>10. Prototype</h2>
+      <pre>
+const baseObj = { name: "Kanika" };
+
+const child1 = Object.create(baseObj);
+console.log(child1.name); // inherited from baseObj
+
+const child2 = Object.create(child1);
+console.log(child2.name); // chain works
+      </pre>
+    </div>
+
+    <div class="box">
+      <h2>11. hasOwnProperty</h2>
+      <pre>
+console.log(child2.hasOwnProperty("name"));  // false (inherited)
+console.log(baseObj.hasOwnProperty("name")); // true (own property)
+      </pre>
+    </div>
+
+    <div class="box">
+      <h2>12. Closure</h2>
+      <pre>
+function createClosure() {
+  let a = 10;
+
+  function innerFunction() {
+    console.log(a);
+  }
+
+  return innerFunction;
+}
+
+let closureTest = createClosure();
+closureTest(); // 10
+      </pre>
+      <p class="highlight">👉 Inner function remembers outer variable</p>
+    </div>
+  </body>
+</html>
