@@ -1,4 +1,4 @@
-# JavaScript Logic Practice & Beginner Interview Programs
+# JavaScript Logic Practice & Beginner Interview Questions
 
 This repository contains a collection of **JavaScript logic programs** and **beginner-level interview questions**, implemented using simple **HTML + JavaScript** examples.
 
