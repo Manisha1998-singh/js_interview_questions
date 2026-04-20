@@ -110,4 +110,4 @@ It is designed to help beginners understand **core JavaScript concepts**, DOM ma
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/js-logic-practice.git
+   git clone https://github.com/your-username/js_interview_questions.git
