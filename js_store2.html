@@ -10,11 +10,31 @@
     <div class="container">
       <h2>js deep copy and shallow copy example.</h2>
     </div>
+
+    <ul id="parent">
+      <li>manisss</li>
+      <li>shilpaaa</li>
+      <li>checkkk</li>
+      <li>talkkk</li>
+    </ul>
     <script>
-      let user = { name: "manisha" };
-      let admin = user;
-      admin.name = "shilpa";
-      console.log(user.name);
+      document.addEventListener("DOMContentLoaded", function () {
+        let user = { name: "manisha" };
+        let admin = user;
+        admin.name = "shilpa";
+        console.log(user.name);
+        ///event delegation
+        document
+          .getElementById("parent")
+          .addEventListener("click", function (e) {
+            //let Li = document.getElementsByTagName("li");
+            if (e.target.tagName === "LI") {
+              e.target.style.display = "none";
+              console.log("mannu");
+              console.log(e.target.tagName);
+            }
+          });
+      });
     </script>
   </body>
 </html>
